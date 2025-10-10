@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <!-- Diagram -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Datatables -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DataTables Core -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/datatables.net-dt@1.13.8/css/jquery.dataTables.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.8/js/jquery.dataTables.min.js"></script>
+
+    <!-- DataTables Buttons Extension -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/datatables.net-buttons-dt@2.4.3/css/buttons.dataTables.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.3/js/dataTables.buttons.min.js"></script>
+
+    <!-- Export dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <!-- Buttons for export -->
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.3/js/buttons.print.min.js"></script>
+
+    <!-- Tom Select -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tom-select/dist/css/tom-select.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/tom-select/dist/js/tom-select.complete.min.js"></script>
+    <style>
+      /* Scrollbar Style */
+      aside::-webkit-scrollbar {
+        width: 3px;
+      }
+      main::-webkit-scrollbar {
+        width: 5px;
+      }
+      #boxTable::-webkit-scrollbar {
+        height: 4px;
+      }
+      aside::-webkit-scrollbar-thumb,
+      main::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+      #boxTable::-webkit-scrollbar-thumb {
+        background: #8c8e8d;
+        border-radius: 10px;
+      }
+
+      /* Datatables*/
+      div.dataTables_wrapper div.dt-buttons {
+        margin-bottom: 10px;
+      }
+      div.dataTables_wrapper div.dataTables_filter {
+        clear: both;
+        margin-bottom: 10px;
+      }
+      .ts-wrapper {
+        width: 100% !important;
+      }
+
+      /* Biar dropdown-nya sejajar rapi */
+      .ts-dropdown {
+        width: 100% !important;
+      }
+    </style>
+  </head>
+  <body class="flex text-sm text-gray-700">
+    <!-- Tempat sidebar masuk -->
+    <div id="sidebar">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-white text-gray flex flex-col min-h-screen max-h-screen overflow-y-auto font-semibold"
+      >
+        <div class="p-4 text-2xl font-bold mt-[60px]"></div>
+
+        <nav class="flex-1 p-2 space-y-2">
+          <!-- Dashboard -->
+          <a
+            href="/superadmin"
+            class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >Dashboard</a
+          >
+          <div class="px-4 py-2 text-[0.8rem] text-gray-400">Page</div>
+          <!-- Master -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Master</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/superadmin/role"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Role</a
+              >
+              <a
+                href="/superadmin/user"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >User</a
+              >
+              <a
+                href="/superadmin/bidang"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Bidang</a
+              >
+            </div>
+          </div>
+          <!-- Tiket -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Tiket</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/superadmin/tiket"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Tiket</a
+              >
+            </div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Konten utama -->
+    <main
+      class="w-full flex-1 bg-[#F2F7FF] relative p-6 pt-[100px] text-gray-700 h-screen overflow-y-auto"
+    >
+      <header
+        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-50"
+      >
+        <div class="w-[170px]">
+          <img
+            src="https://sicantik.unwahas.ac.id/assets/images/logobaru3duwh.png"
+            alt=""
+          />
+        </div>
+        <div class="relative">
+          <div id="userButton" class="rounded p-2 cursor-pointer">
+            <div class="flex items-center gap-1">
+              <img
+                src="https://sicantik.unwahas.ac.id/assets/images/Unwahas.png"
+                alt=""
+                class="w-[25px] h-[29px]"
+              />
+              <span>Superadmin</span>
+              <svg
+                class="w-4 h-4 transform transition-transform rotate-90"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            id="userDropdown"
+            class="bg-white w-full rounded absolute right-0 top-[38px] mt-2 hidden"
+          >
+            <a
+              href="#"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Profile
+            </a>
+            <a
+              href="/"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Title -->
+      <span class="font-bold text-xl text-gray-700">Tiket</span>
+
+      <!-- Tabel -->
+      <section class="bg-white p-6 rounded mt-7 shadow">
+        <!--  -->
+        <div class="mb-4 flex justify-between items-center">
+          <!-- Tombol tambah -->
+          <button
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow"
+          >
+            + Tambah
+          </button>
+
+          <!-- Dropdown -->
+          <div class="flex gap-3">
+            <div class="w-[200px] max-h-[38px] relative">
+              <select
+                name="bidang"
+                id="filter-bidang"
+                placeholder="Pilih Bidang..."
+              >
+                <option value="all">Semua Bidang</option>
+                <option value="Pelayanan Akademik">Pelayanan Akademik</option>
+                <option value="Pelayanan Keuangan">Pelayanan Keuangan</option>
+              </select>
+              <span class="absolute bottom-2 right-2 z-10"
+                ><i class="fa-solid fa-caret-down"></i
+              ></span>
+            </div>
+
+            <div class="w-[200px] max-h-[38px] relative">
+              <select
+                name="status"
+                id="filter-status"
+                placeholder="Pilih Status..."
+              >
+                <option value="all">Semua Status</option>
+                <option value="Baru">Baru</option>
+                <option value="Dalam Proses">Dalam Proses</option>
+                <option value="Selesai">Selesai</option>
+              </select>
+              <span class="absolute bottom-2 right-2 z-10"
+                ><i class="fa-solid fa-caret-down"></i
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <div id="boxTable" class="w-full overflow-x-auto py-2">
+          <table id="mydatatable" class="min-w-[1400px]">
+            <thead class="bg-gray-100">
+              <tr>
+                <th class="px-4 py-4 text-left">No</th>
+                <th class="px-4 py-4 text-left">ID Pelacakan</th>
+                <th class="px-4 py-4 text-left">Tanggal Masuk</th>
+                <th class="px-4 py-4 text-left">Waktu Masuk</th>
+                <th class="px-4 py-4 text-left">Pelanggan</th>
+                <th class="px-4 py-4 text-left">Bidang Kategori</th>
+                <th class="px-4 py-4 text-left">Tanggal Selesai</th>
+                <th class="px-4 py-4 text-left">Waktu Selesai</th>
+                <th class="px-4 py-4 text-left">Rentang</th>
+                <th class="px-4 py-4 text-left">Status</th>
+                <th class="px-4 py-4 text-center">Aksi</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-100">
+              <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                <td class="px-4 py-3">1</td>
+                <td class="px-4 py-3 font-mono text-blue-600">29P-ZRV-5DS2</td>
+                <td class="px-4 py-3">07/10/2025</td>
+                <td class="px-4 py-3">09:00</td>
+                <td class="px-4 py-3">Farid Sunanda</td>
+                <td class="px-4 py-3">Pelayanan Akademik</td>
+                <td class="px-4 py-3">08/10/2025</td>
+                <td class="px-4 py-3">10:00</td>
+                <td class="px-4 py-3">1 Hari 2 Jam</td>
+                <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
+                <td class="px-4 py-3 text-center">
+                  <div class="flex justify-center gap-2">
+                    <button
+                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      title="Edit"
+                    >
+                      <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <button
+                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
+                    >
+                      <i class="fa-solid fa-lock"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                <td class="px-4 py-3">2</td>
+                <td class="px-4 py-3 font-mono text-blue-600">29P-ZRV-5DS2</td>
+                <td class="px-4 py-3">07/10/2025</td>
+                <td class="px-4 py-3">09:00</td>
+                <td class="px-4 py-3">Farid Sunanda</td>
+                <td class="px-4 py-3">Pelayanan Akademik</td>
+                <td class="px-4 py-3">-</td>
+                <td class="px-4 py-3">-</td>
+                <td class="px-4 py-3">-</td>
+                <td class="px-4 py-3 text-indigo-700 font-semibold">
+                  Dalam Proses
+                </td>
+                <td class="px-4 py-3 text-center">
+                  <div class="flex justify-center gap-2">
+                    <button
+                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      title="Edit"
+                    >
+                      <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <button
+                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
+                    >
+                      <i class="fa-solid fa-lock"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50 transition duration-150 ease-in-out">
+                <td class="px-4 py-3">3</td>
+                <td class="px-4 py-3 font-mono text-blue-600">29P-ZRV-5DS2</td>
+                <td class="px-4 py-3">07/10/2025</td>
+                <td class="px-4 py-3">09:00</td>
+                <td class="px-4 py-3">Farid Sunanda</td>
+                <td class="px-4 py-3">Pelayanan Akademik</td>
+                <td class="px-4 py-3">-</td>
+                <td class="px-4 py-3">-</td>
+                <td class="px-4 py-3">-</td>
+                <td class="px-4 py-3 text-red-700 font-semibold">Baru</td>
+                <td class="px-4 py-3 text-center">
+                  <div class="flex justify-center gap-2">
+                    <button
+                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      title="Edit"
+                    >
+                      <i class="fa-solid fa-list-ul"></i>
+                    </button>
+                    <button
+                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
+                    >
+                      <i class="fa-solid fa-lock"></i>
+                    </button>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="absolute left-0 bg-white text-center w-full mt-[200px] py-4"
+      >
+        <span>
+          <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+          | All Rights Reserved | Powered by
+          <a href="" class="hover:text-blue-800 font-semibold">
+            Universitas Wahid Hasyim
+          </a>
+        </span>
+      </footer>
+    </main>
+
+    <script>
+      // Datatables
+      $(document).ready(function () {
+        var table = $("#mydatatable").DataTable({
+          dom: "Bflrtip",
+          buttons: ["excelHtml5", "pdfHtml5", "print"],
+          initComplete: function () {
+            // Styling
+            $("div.dataTables_filter input").addClass(
+              "border border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-0 focus:border-gray-400"
+            );
+            $("div.dataTables_length select").addClass(
+              "border border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-0 focus-border-gray-400"
+            );
+          },
+        });
+
+        // Filter Bidang
+        $("#filter-bidang").on("change", function () {
+          var val = $.fn.dataTable.util.escapeRegex($(this).val());
+          table
+            .column(5)
+            .search(val ? "^" + val + "$" : "", true, false)
+            .draw();
+          if (val === "all") table.column(5).search("").draw();
+        });
+        // Filter Status
+        $("#filter-status").on("change", function () {
+          var val = $.fn.dataTable.util.escapeRegex($(this).val());
+          table
+            .column(9)
+            .search(val ? "^" + val + "$" : "", true, false)
+            .draw();
+          if (val === "all") table.column(9).search("").draw();
+        });
+      });
+
+      // Userbutton
+      const userButton = document.getElementById("userButton");
+      const userDropdown = document.getElementById("userDropdown");
+      userButton.addEventListener("mouseover", () => {
+        userDropdown.classList.remove("hidden");
+      });
+      userButton.addEventListener("mouseleave", (e) => {
+        if (!userDropdown.matches(":hover")) {
+          userDropdown.classList.add("hidden");
+        }
+      });
+      userDropdown.addEventListener("mouseleave", () => {
+        userDropdown.classList.add("hidden");
+      });
+
+      //Tom Select
+      new TomSelect("#filter-bidang", {
+        create: false,
+        // sortField: { field: "text", direction: "asc" },
+        placeholder: "Pilih Bidang...",
+      });
+
+      new TomSelect("#filter-status", {
+        create: false,
+        // sortField: { field: "text", direction: "asc" },
+        placeholder: "Pilih Status...",
+      });
+    </script>
+  </body>
+</html>

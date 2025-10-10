@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Datatables -->
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- DataTables Core -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/datatables.net-dt@1.13.8/css/jquery.dataTables.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net@1.13.8/js/jquery.dataTables.min.js"></script>
+
+    <!-- DataTables Buttons Extension -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/datatables.net-buttons-dt@2.4.3/css/buttons.dataTables.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.3/js/dataTables.buttons.min.js"></script>
+
+    <!-- Export dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+
+    <!-- Buttons for export -->
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.3/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/datatables.net-buttons@2.4.3/js/buttons.print.min.js"></script>
+    <style>
+      /* Scrollbar Style */
+      aside::-webkit-scrollbar {
+        width: 3px;
+      }
+      main::-webkit-scrollbar {
+        width: 5px;
+      }
+      aside::-webkit-scrollbar-thumb,
+      main::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body class="flex text-sm text-gray-700">
+    <!-- Tempat sidebar masuk -->
+    <div id="sidebar">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-white text-gray flex flex-col min-h-screen max-h-screen overflow-y-auto font-semibold"
+      >
+        <div class="p-4 text-2xl font-bold mt-[60px]"></div>
+
+        <nav class="flex-1 p-2 space-y-2">
+          <!-- Dashboard -->
+          <a
+            href="/superadmin"
+            class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >Dashboard</a
+          >
+          <div class="px-4 py-2 text-[0.8rem] text-gray-400">Page</div>
+          <!-- Master -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Master</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/superadmin/role"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Role</a
+              >
+              <a
+                href="/superadmin/user"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >User</a
+              >
+              <a
+                href="/superadmin/bidang"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Bidang</a
+              >
+            </div>
+          </div>
+          <!-- Tiket -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Tiket</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/superadmin/tiket"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Tiket</a
+              >
+            </div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Konten utama -->
+    <main
+      class="w-full flex-1 bg-[#F2F7FF] relative p-6 pt-[100px] text-gray-700 h-screen overflow-y-auto"
+    >
+      <header
+        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-50"
+      >
+        <div class="w-[170px]">
+          <img
+            src="https://sicantik.unwahas.ac.id/assets/images/logobaru3duwh.png"
+            alt=""
+          />
+        </div>
+        <div class="relative">
+          <div id="userButton" class="rounded p-2 cursor-pointer">
+            <div class="flex items-center gap-1">
+              <img
+                src="https://sicantik.unwahas.ac.id/assets/images/Unwahas.png"
+                alt=""
+                class="w-[25px] h-[29px]"
+              />
+              <span>Superadmin</span>
+              <svg
+                class="w-4 h-4 transform transition-transform rotate-90"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            id="userDropdown"
+            class="bg-white w-full rounded absolute right-0 top-[38px] mt-2 hidden"
+          >
+            <a
+              href="#"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Profile
+            </a>
+            <a
+              href="/"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Title -->
+      <span class="font-bold text-xl text-gray-700">Master Bidang</span>
+
+      <!-- Tabel -->
+      <section class="bg-white p-6 rounded mt-7 shadow">
+        <!--  -->
+        <div class="flex items-center justify-between mb-4">
+          <button
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          >
+            + Tambah
+          </button>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table id="mydatatable" class="min-w-full">
+            <thead class="bg-gray-100">
+              <tr>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  No
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Nama
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Deskripsi
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Aksi
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">1</td>
+                <td class="px-4 py-2">Superadmin</td>
+                <td class="px-4 py-2">
+                  Bidang Superadmin dengan akses ke seluruh fitur
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">2</td>
+                <td class="px-4 py-2">Yayasan</td>
+                <td class="px-4 py-2">
+                  Bidang Yayasan dengan akses ke beberapa fitur
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">3</td>
+                <td class="px-4 py-2">Pelayanan Akademik</td>
+                <td class="px-4 py-2">
+                  Bidang Pelayanan Akademik dengan akses ke beberapa fitur
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">4</td>
+                <td class="px-4 py-2">Pelayanan Keuangan</td>
+                <td class="px-4 py-2">
+                  Bidang Pelayanan Keuangan yang menangani administrasi dan
+                  transaksi keuangan.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">5</td>
+                <td class="px-4 py-2">Kemahasiswaan</td>
+                <td class="px-4 py-2">
+                  Bidang Kemahasiswaan yang mengelola kegiatan, organisasi, dan
+                  kesejahteraan mahasiswa.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">6</td>
+                <td class="px-4 py-2">Sarana dan Prasarana</td>
+                <td class="px-4 py-2">
+                  Bidang Sarana dan Prasarana yang bertanggung jawab atas
+                  fasilitas dan infrastruktur kampus.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">7</td>
+                <td class="px-4 py-2">SIKADU</td>
+                <td class="px-4 py-2">
+                  Sistem Informasi Akademik (SIKADU) untuk pengelolaan data
+                  akademik mahasiswa dan dosen.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">8</td>
+                <td class="px-4 py-2">SIKAWAN</td>
+                <td class="px-4 py-2">
+                  Sistem Informasi Karyawan (SIKAWAN) untuk administrasi pegawai
+                  dan kepegawaian kampus.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">9</td>
+                <td class="px-4 py-2">Pelayanan Wisuda</td>
+                <td class="px-4 py-2">
+                  Bidang Pelayanan Wisuda yang mengatur proses administrasi dan
+                  pelaksanaan wisuda.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">10</td>
+                <td class="px-4 py-2">TOEFL/TOAFL</td>
+                <td class="px-4 py-2">
+                  Bidang layanan TOEFL/TOAFL yang menyediakan pengujian
+                  kemampuan bahasa Inggris dan Arab bagi mahasiswa dan dosen.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">11</td>
+                <td class="px-4 py-2">Sistem Informasi</td>
+                <td class="px-4 py-2">
+                  Bidang Sistem Informasi yang mengelola pengembangan dan
+                  pemeliharaan sistem digital kampus.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">12</td>
+                <td class="px-4 py-2">Perpustakaan</td>
+                <td class="px-4 py-2">
+                  Bidang Perpustakaan yang menyediakan layanan peminjaman buku
+                  dan sumber referensi akademik.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">13</td>
+                <td class="px-4 py-2">Pusat Karir</td>
+                <td class="px-4 py-2">
+                  Bidang Pusat Karir yang mendukung mahasiswa dan alumni dalam
+                  pengembangan karier dan pelatihan kerja.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2">14</td>
+                <td class="px-4 py-2">Jaringan/WiFi</td>
+                <td class="px-4 py-2">
+                  Bidang Jaringan dan WiFi yang mengelola konektivitas internet
+                  serta infrastruktur jaringan kampus.
+                </td>
+                <td class="px-4 py-2 flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="absolute left-0 bg-white text-center w-full mt-[200px] py-4"
+      >
+        <span>
+          <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+          | All Rights Reserved | Powered by
+          <a href="" class="hover:text-blue-800 font-semibold">
+            Universitas Wahid Hasyim
+          </a>
+        </span>
+      </footer>
+    </main>
+
+    <script>
+      // Datatables
+      $(document).ready(function () {
+        var table = $("#mydatatable").DataTable({
+          dom: "flrtip",
+          buttons: ["excelHtml5", "pdfHtml5", "print"],
+          initComplete: function () {
+            // Styling
+            $("div.dataTables_filter input").addClass(
+              "border mb-3 border-gray-300 rounded-md px-3 py-1 focus:outline-none focus:ring-0 focus:border-gray-400"
+            );
+            $("div.dataTables_length select").addClass(
+              "border mb-3 border-gray-300 rounded-md px-2 py-1 focus:outline-none focus:ring-0 focus-border-gray-400"
+            );
+          },
+        });
+      });
+
+      //User button
+      const userButton = document.getElementById("userButton");
+      const userDropdown = document.getElementById("userDropdown");
+
+      userButton.addEventListener("mouseover", () => {
+        userDropdown.classList.remove("hidden");
+      });
+      userButton.addEventListener("mouseleave", (e) => {
+        if (!userDropdown.matches(":hover")) {
+          userDropdown.classList.add("hidden");
+        }
+      });
+      userDropdown.addEventListener("mouseleave", () => {
+        userDropdown.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

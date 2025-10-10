@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <style>
+      /* Scrollbar Style */
+      body::-webkit-scrollbar {
+        width: 5px;
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      id="main-header"
+      class="w-full sticky top-0 z-50 bg-white transition-shadow duration-300"
+    >
+      <nav class="w-full bg-white px-4 py-3 flex justify-between items-center">
+        <div class="w-[180px]">
+          <a href="#">
+            <img src="/img/logo.png" alt="Logo" />
+          </a>
+        </div>
+
+        <div
+          class="w-[70%] text-center font-semibold flex justify-center gap-8"
+        >
+          <a href="/" class="relative group pb-1">
+            Beranda
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+
+          <a href="/#faq" class="relative group pb-1">
+            FAQ
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+
+        <div class="w-[180px] text-right">
+          <button
+            onclick="window.location.href='/login'"
+            class="cursor-pointer border px-6 py-[6px] rounded border-green-600 text-green-600 font-semibold hover:bg-green-600 hover:text-white transition"
+          >
+            Login
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Ticket -->
+    <section class="py-16 bg-white min-h-[calc(100vh-100px)]">
+      <!-- Title -->
+      <div class="mb-12 px-4 w-full text-center mb-[100px]">
+        <h2 class="text-3xl md:text-3xl font-bold text-gray-900">
+          Kirimkan Permohonan Dukungan
+        </h2>
+        <p class="text-gray-600">
+          Kirimkan Isu Terbaru Dan Permohonan Dukungan Kepada Departemen Yang
+          Bertanggung Jawab
+        </p>
+      </div>
+      <!-- Ticket -->
+      <div class="w-[50%] mx-auto">
+        <!-- Box -->
+        <div class="flex justify-between flex-wrap">
+          <a
+            href="check-ticket"
+            class="relative group border border-green-300 border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-full text-center mb-4 transition-all duration-300 ease-in-out"
+          >
+            <span class="relative z-10 group-hover:text-gray-700">
+              Lihat tiket yang sudah ada? Tampilkan tiket yang pernah Anda
+              kirimkan sebelumnya
+            </span>
+            <span
+              class="absolute bg-green-300 rounded left-0 top-0 h-[100%] w-0 group-hover:w-full transition-all duration-300 ease-in-out"
+            ></span>
+          </a>
+          <a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Pelayanan Akademik <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Pelayanan Keuangan
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Kemahasiswaan
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Sarana & Prasarana <i class="fa-solid fa-arrow-right"></i> </a
+          ><a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >SIKADU <i class="fa-solid fa-arrow-right"></i> </a
+          ><a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >SIKAWAN
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Pelayanan Wisuda <i class="fa-solid fa-arrow-right"></i> </a
+          ><a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >TOEFL/TOAFL <i class="fa-solid fa-arrow-right"></i> </a
+          ><a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Sistem Informasi
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+          <a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Perpustakaan <i class="fa-solid fa-arrow-right"></i> </a
+          ><a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Pusat Karir <i class="fa-solid fa-arrow-right"></i> </a
+          ><a
+            href="send-ticket"
+            class="border border-l-4 border-l-green-300 text-gray-600 font-semibold px-3 py-4 rounded-lg w-[32%] mb-4 flex items-center gap-1 hover:gap-3 hover:bg-green-300 transition-all duration-300 ease-in-out"
+            >Jaringan/WiFi
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="w-full bg-green-600 py-6 text-center text-[0.8rem] text-white"
+    >
+      <span>
+        <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+        | All Rights Reserved | Powered by
+        <a href="" class="hover:text-blue-800 font-semibold">
+          Universitas Wahid Hasyim
+        </a>
+      </span>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      //   Smooth Scroll
+      const header = document.getElementById("main-header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) {
+          header.classList.add("shadow-md", "bg-white/95", "backdrop-blur-sm");
+        } else {
+          header.classList.remove(
+            "shadow-md",
+            "bg-white/95",
+            "backdrop-blur-sm"
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

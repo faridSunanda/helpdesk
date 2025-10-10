@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Scrollbar Style */
+      aside::-webkit-scrollbar {
+        width: 3px;
+      }
+      main::-webkit-scrollbar {
+        width: 5px;
+      }
+      aside::-webkit-scrollbar-thumb,
+      main::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body class="flex text-sm text-gray-700">
+    <!-- Tempat sidebar masuk -->
+    <div id="sidebar">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-white text-gray flex flex-col min-h-screen max-h-screen overflow-y-auto font-semibold"
+      >
+        <div class="p-4 text-2xl font-bold mt-[60px]"></div>
+
+        <nav class="flex-1 p-2 space-y-2">
+          <!-- Dashboard -->
+          <a
+            href="/superadmin"
+            class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >Dashboard</a
+          >
+          <div class="px-4 py-2 text-[0.8rem] text-gray-400">Page</div>
+          <!-- Master -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Master</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/superadmin/role"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Role</a
+              >
+              <a
+                href="/superadmin/user"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >User</a
+              >
+              <a
+                href="/superadmin/bidang"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Bidang</a
+              >
+            </div>
+          </div>
+          <!-- Tiket -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Tiket</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/superadmin/tiket"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Tiket</a
+              >
+            </div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Konten utama -->
+    <main
+      class="w-full flex-1 bg-[#F2F7FF] relative p-6 pt-[100px] text-gray-700 h-screen overflow-y-auto"
+    >
+      <header
+        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-50"
+      >
+        <div class="w-[170px]">
+          <img
+            src="https://sicantik.unwahas.ac.id/assets/images/logobaru3duwh.png"
+            alt=""
+          />
+        </div>
+        <div class="relative">
+          <div id="userButton" class="rounded p-2 cursor-pointer">
+            <div class="flex items-center gap-1">
+              <img
+                src="https://sicantik.unwahas.ac.id/assets/images/Unwahas.png"
+                alt=""
+                class="w-[25px] h-[29px]"
+              />
+              <span>Superadmin</span>
+              <svg
+                class="w-4 h-4 transform transition-transform rotate-90"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            id="userDropdown"
+            class="bg-white w-full rounded absolute right-0 top-[38px] mt-2 hidden"
+          >
+            <a
+              href="#"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Profile
+            </a>
+            <a
+              href="/"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Title -->
+      <span class="font-bold text-xl text-gray-700">Master Role</span>
+
+      <!-- Tabel -->
+      <section class="bg-white p-6 rounded mt-7 shadow">
+        <!--  -->
+        <div class="flex items-center justify-between mb-4">
+          <button
+            class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded"
+          >
+            + Tambah
+          </button>
+          <input
+            type="text"
+            placeholder="Search..."
+            class="border px-3 py-2 rounded"
+          />
+        </div>
+
+        <div class="flex items-center gap-2 mb-2">
+          <label>Show</label>
+          <select class="border rounded px-2 py-1">
+            <option>10</option>
+            <option>25</option>
+            <option>50</option>
+          </select>
+          <span>entries</span>
+        </div>
+
+        <div class="overflow-x-auto">
+          <table
+            class="min-w-full border border-gray-200 rounded-lg shadow-sm border-r-0 border-l-0"
+          >
+            <thead class="bg-gray-100">
+              <tr>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  No
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Role
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Deskripsi
+                </th>
+                <th
+                  class="px-4 py-3 text-left text-sm font-semibold text-gray-700"
+                >
+                  Aksi
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2 border-b">1</td>
+                <td class="px-4 py-2 border-b">superadmin</td>
+                <td class="px-4 py-2 border-b">
+                  Role Superadmin dengan akses ke seluruh fitur
+                </td>
+                <td class="px-4 py-2 border-b flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2 border-b">2</td>
+                <td class="px-4 py-2 border-b">yayasan</td>
+                <td class="px-4 py-2 border-b">
+                  Role Yayasan dengan akses ke beberapa fitur
+                </td>
+                <td class="px-4 py-2 border-b flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+              <tr class="hover:bg-gray-50">
+                <td class="px-4 py-2 border-b">3</td>
+                <td class="px-4 py-2 border-b">unit</td>
+                <td class="px-4 py-2 border-b">
+                  Role unit dengan akses ke beberapa fitur
+                </td>
+                <td class="px-4 py-2 border-b flex gap-2 text-sm">
+                  <button
+                    class="bg-yellow-400 hover:bg-yellow-500 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-pen-to-square"></i>
+                  </button>
+                  <button
+                    class="bg-red-500 hover:bg-red-600 text-white px-[8px] py-[7px] rounded"
+                  >
+                    <i class="fa-solid fa-trash"></i>
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div
+          class="flex justify-between items-center mt-4 text-sm text-gray-600"
+        >
+          <span>Showing 1 to 3 of 3 entries</span>
+          <div class="flex items-center">
+            <button class="px-3 py-1 border bg-gray-200">Previous</button>
+            <button
+              class="px-3 py-[5px] border-t border-b bg-blue-600 text-white"
+            >
+              1
+            </button>
+            <button class="px-3 py-1 border bg-gray-200">Next</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="absolute left-0 bg-white text-center w-full mt-[200px] py-4"
+      >
+        <span>
+          <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+          | All Rights Reserved | Powered by
+          <a href="" class="hover:text-blue-800 font-semibold">
+            Universitas Wahid Hasyim
+          </a>
+        </span>
+      </footer>
+    </main>
+
+    <script>
+      const userButton = document.getElementById("userButton");
+      const userDropdown = document.getElementById("userDropdown");
+
+      userButton.addEventListener("mouseover", () => {
+        userDropdown.classList.remove("hidden");
+      });
+      userButton.addEventListener("mouseleave", (e) => {
+        if (!userDropdown.matches(":hover")) {
+          userDropdown.classList.add("hidden");
+        }
+      });
+      userDropdown.addEventListener("mouseleave", () => {
+        userDropdown.classList.add("hidden");
+      });
+    </script>
+  </body>
+</html>

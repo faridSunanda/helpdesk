@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <style>
+      /* Scrollbar Style */
+      home::-webkit-scrollbar {
+        width: 5px;
+      }
+      home::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Main  -->
+    <main class="flex">
+      <!-- Kiri -->
+      <div
+        class="w-[60%] h-screen bg-[url('/img/background.png')] bg-cover"
+      ></div>
+      <!-- Kanan -->
+      <div class="w-[40%]">
+        <div class="w-[80%] mx-auto mt-20">
+          <form class="rounded-2xl p-8 w-full space-y-6" action="/superadmin">
+            <h1 class="text-2xl font-semibold text-gray-800 text-center">
+              Selamat Datang
+            </h1>
+            <p class="text-gray-500 text-center text-sm">
+              Silakan masuk untuk melanjutkan ke sistem.
+            </p>
+
+            <div>
+              <label
+                for="username"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Username</label
+              >
+              <input
+                type="text"
+                id="username"
+                name="username"
+                placeholder="Masukkan username Anda"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+              />
+            </div>
+
+            <div class="relative">
+              <label
+                for="password"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Password</label
+              >
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Masukkan password Anda"
+                class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none pr-10"
+              />
+              <!-- Tombol Show/Hide -->
+              <button
+                type="button"
+                id="togglePassword"
+                class="absolute inset-y-2 right-2 top-8 flex items-center text-gray-500 hover:text-green-600 focus:outline-none"
+              >
+                <!-- Ikon default mata -->
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  id="eyeIcon"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-5 h-5"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.272 4.5 12 4.5c4.728 0 8.578 3.01 9.964 7.183.07.207.07.431 0 .639C20.578 16.49 16.728 19.5 12 19.5c-4.728 0-8.578-3.01-9.964-7.178z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                </svg>
+              </button>
+            </div>
+
+            <div class="flex items-center justify-between text-sm">
+              <label class="flex items-center gap-2 text-gray-600">
+                <input
+                  type="checkbox"
+                  name="rememberMe"
+                  id="rememberMe"
+                  class="accent-green-500"
+                />
+                Ingat Saya
+              </label>
+
+              <a href="#" class="text-green-600 hover:underline"
+                >Lupa Password?</a
+              >
+            </div>
+
+            <button
+              type="submit"
+              class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 rounded-lg transition-colors duration-200"
+            >
+              Masuk
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer
+      class="w-full bg-green-600 py-6 text-center text-[0.8rem] text-white"
+    >
+      <span>
+        <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+        | All Rights Reserved | Powered by
+        <a href="" class="hover:text-blue-800 font-semibold">
+          Universitas Wahid Hasyim
+        </a>
+      </span>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      const passwordInput = document.getElementById("password");
+      const togglePassword = document.getElementById("togglePassword");
+      const eyeIcon = document.getElementById("eyeIcon");
+
+      let isVisible = false;
+
+      togglePassword.addEventListener("click", () => {
+        isVisible = !isVisible;
+        passwordInput.setAttribute("type", isVisible ? "text" : "password");
+
+        // Ganti ikon pakai innerHTML biar nggak kehilangan event listener
+        eyeIcon.innerHTML = isVisible
+          ? `<path stroke-linecap="round" stroke-linejoin="round" d="M3.98 8.223a10.477 10.477 0 00-.955 3.777 10.477 10.477 0 00.955 3.777m16.04-7.554a10.477 10.477 0 01.955 3.777 10.477 10.477 0 01-.955 3.777M12 4.5c-4.728 0-8.578 3.01-9.964 7.178a1.012 1.012 0 000 .644C3.422 16.49 7.272 19.5 12 19.5c4.728 0 8.578-3.01 9.964-7.178a1.012 1.012 0 000-.644C20.578 7.51 16.728 4.5 12 4.5z" />
+         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+         <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18" />`
+          : `<path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.272 4.5 12 4.5c4.728 0 8.578 3.01 9.964 7.183.07.207.07.431 0 .639C20.578 16.49 16.728 19.5 12 19.5c-4.728 0-8.578-3.01-9.964-7.178z" />
+         <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />`;
+      });
+    </script>
+  </body>
+</html>

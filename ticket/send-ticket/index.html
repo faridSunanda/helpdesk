@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <style>
+      /* Scrollbar Style */
+      body::-webkit-scrollbar {
+        width: 5px;
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      id="main-header"
+      class="w-full sticky top-0 z-50 bg-white transition-shadow duration-300"
+    >
+      <nav class="w-full bg-white px-4 py-3 flex justify-between items-center">
+        <div class="w-[180px]">
+          <a href="#">
+            <img src="/img/logo.png" alt="Logo" />
+          </a>
+        </div>
+
+        <div
+          class="w-[70%] text-center font-semibold flex justify-center gap-8"
+        >
+          <a href="/" class="relative group pb-1">
+            Beranda
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+
+          <a href="/#faq" class="relative group pb-1">
+            FAQ
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+
+        <div class="w-[180px] text-right">
+          <button
+            onclick="window.location.href='/login'"
+            class="cursor-pointer border px-6 py-[6px] rounded border-green-600 text-green-600 font-semibold hover:bg-green-600 hover:text-white transition"
+          >
+            Login
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Send Ticket -->
+    <section class="py-16 bg-white min-h-[calc(100vh-100px)]">
+      <!-- Ticket -->
+      <div class="w-[50%] mx-auto border p-4">
+        <span class="text-[0.7rem] text-gray-500">
+          <a href="/ticket">Tiket</a>
+          <i class="fa-solid fa-arrow-right"></i> Pelayanan Akademik
+        </span>
+        <!-- Form -->
+        <form class="rounded-2xl p-8 w-full space-y-6" action="">
+          <h1 class="text-2xl font-semibold text-gray-800 text-center">
+            Kirimkan Permohonan Dukungan
+          </h1>
+          <p class="text-gray-500 text-center text-sm">
+            Kolom isian yang wajib diisi ditandai dengan
+            <span class="text-red-600">*</span>
+          </p>
+
+          <!-- Username -->
+          <div>
+            <label
+              for="username"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Nama Lengkap</label
+            >
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Masukkan nama Anda"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- Email -->
+          <div>
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Email</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="nama@email.com"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- Unit dan Status -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label
+                for="unit"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Unit</label
+              >
+              <select
+                name="unit"
+                id="unit"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-green-400 focus:outline-none"
+              >
+                <option value="">Pilih unit</option>
+                <option value="unit1">Unit 1</option>
+                <option value="unit2">Unit 2</option>
+                <option value="unit3">Unit 3</option>
+              </select>
+            </div>
+
+            <div>
+              <label
+                for="status"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Status</label
+              >
+              <select
+                name="status"
+                id="status"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-green-400 focus:outline-none"
+              >
+                <option value="">Pilih status</option>
+                <option value="status1">Status 1</option>
+                <option value="status2">Status 2</option>
+                <option value="status3">Status 3</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- NIM / NPP -->
+          <div>
+            <label
+              for="nimOrNpp"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >NIM / NPP</label
+            >
+            <input
+              type="text"
+              name="nimOrNpp"
+              id="nimOrNpp"
+              placeholder="Masukkan NIM atau NPP"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- Pesan -->
+          <div>
+            <label
+              for="pesan"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Pesan / Keterangan</label
+            >
+            <textarea
+              name="pesan"
+              id="pesan"
+              rows="4"
+              placeholder="Tuliskan pesan atau keterangan di sini..."
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <!-- File -->
+          <div>
+            <label
+              for="file"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Lampiran (Opsional)</label
+            >
+            <input
+              type="file"
+              name="file"
+              id="file"
+              class="w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+            />
+          </div>
+
+          <!-- Captcha -->
+          <div>
+            <label
+              for="chaptcha"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Captcha</label
+            >
+            <input
+              type="text"
+              name="chaptcha"
+              id="chaptcha"
+              placeholder="Masukkan kode verifikasi"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- Tombol -->
+          <button
+            type="submit"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 rounded-md transition-colors duration-200"
+          >
+            Kirim
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="w-full bg-green-600 py-6 text-center text-[0.8rem] text-white"
+    >
+      <span>
+        <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+        | All Rights Reserved | Powered by
+        <a href="" class="hover:text-blue-800 font-semibold">
+          Universitas Wahid Hasyim
+        </a>
+      </span>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      //   Smooth Scroll
+      const header = document.getElementById("main-header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) {
+          header.classList.add("shadow-md", "bg-white/95", "backdrop-blur-sm");
+        } else {
+          header.classList.remove(
+            "shadow-md",
+            "bg-white/95",
+            "backdrop-blur-sm"
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
