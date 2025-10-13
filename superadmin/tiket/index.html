@@ -183,7 +183,7 @@
       class="w-full flex-1 bg-[#F2F7FF] relative p-6 pt-[100px] text-gray-700 h-screen overflow-y-auto"
     >
       <header
-        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-50"
+        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-40"
       >
         <div class="w-[170px]">
           <img
@@ -245,6 +245,7 @@
         <div class="mb-4 flex justify-between items-center">
           <!-- Tombol tambah -->
           <button
+            id="buttonOpenModal"
             class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded shadow"
           >
             + Tambah
@@ -326,17 +327,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
-                      title="Detail"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                      title="Kunci"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -355,15 +358,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -384,15 +391,19 @@
                 </td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -411,15 +422,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -438,15 +453,19 @@
                 <td class="px-4 py-3 text-red-600 font-semibold">Baru</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -465,15 +484,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -492,15 +515,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -521,15 +548,19 @@
                 </td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -548,15 +579,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -575,15 +610,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -602,15 +641,19 @@
                 <td class="px-4 py-3 text-red-600 font-semibold">Baru</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -629,15 +672,19 @@
                 <td class="px-4 py-3 text-green-700 font-semibold">Selesai</td>
                 <td class="px-4 py-3 text-center">
                   <div class="flex justify-center gap-2">
+                    <a href="/superadmin/tiket/detail">
+                      <button
+                        class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                        title="Detail"
+                      >
+                        <i class="fa-solid fa-list-ul"></i>
+                      </button>
+                    </a>
                     <button
-                      class="bg-blue-400 hover:bg-blue-500 text-white px-[8px] py-[7px] rounded transition"
+                      class="bg-yellow-500 buttonDeleteModalConfirmation hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
+                      title="Hapus"
                     >
-                      <i class="fa-solid fa-list-ul"></i>
-                    </button>
-                    <button
-                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-[8px] py-[7px] rounded transition"
-                    >
-                      <i class="fa-solid fa-lock"></i>
+                      <i class="fa-solid fa-trash"></i>
                     </button>
                   </div>
                 </td>
@@ -660,8 +707,284 @@
         </span>
       </footer>
     </main>
+    <!-- Modal Form -->
+    <section
+      id="boxModal"
+      class="hidden absolute top-0 left-0 flex justify-center items-center z-50 w-full h-screen bg-[rgba(0,0,0,0.5)] transition-opacity duration-300"
+    >
+      <div
+        id="modalContent"
+        class="bg-white w-[80%] p-10 rounded transform scale-95 opacity-0 transition-all duration-300 relative"
+      >
+        <!-- Form -->
+        <form
+          class="rounded-2xl p-8 w-full space-y-6 flex flex-wrap gap-2"
+          action=""
+        >
+          <h1 class="text-2xl font-semibold text-gray-800 text-center w-full">
+            Kirimkan Permohonan Dukungan
+          </h1>
+
+          <!-- Username -->
+          <div class="w-[24%]">
+            <label
+              for="username"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Nama Lengkap</label
+            >
+            <input
+              type="text"
+              name="username"
+              id="username"
+              placeholder="Masukkan nama Anda"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- Email -->
+          <div class="w-[24%]">
+            <label
+              for="email"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Email</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="nama@email.com"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- Unit dan Status -->
+          <div class="w-[48%] flex gap-2">
+            <div class="w-[50%]">
+              <label
+                for="unit"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Unit</label
+              >
+              <select
+                name="unit"
+                id="unit"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-green-400 focus:outline-none"
+              >
+                <option value="">Pilih unit</option>
+                <option value="unit1">Unit 1</option>
+                <option value="unit2">Unit 2</option>
+                <option value="unit3">Unit 3</option>
+              </select>
+            </div>
+
+            <div class="w-[50%]">
+              <label
+                for="status"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Status</label
+              >
+              <select
+                name="status"
+                id="status"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md bg-white focus:ring-2 focus:ring-green-400 focus:outline-none"
+              >
+                <option value="">Pilih status</option>
+                <option value="status1">Status 1</option>
+                <option value="status2">Status 2</option>
+                <option value="status3">Status 3</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- NIM / NPP -->
+          <div class="w-[24%]">
+            <label
+              for="nimOrNpp"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >NIM / NPP</label
+            >
+            <input
+              type="text"
+              name="nimOrNpp"
+              id="nimOrNpp"
+              placeholder="Masukkan NIM atau NPP"
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+            />
+          </div>
+
+          <!-- File -->
+          <div class="w-[24%]">
+            <label
+              for="file"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Lampiran (Opsional)</label
+            >
+            <input
+              type="file"
+              name="file"
+              id="file"
+              class="w-full text-sm border rounded-md text-gray-700 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-medium file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+            />
+          </div>
+
+          <!-- Pesan -->
+          <div class="w-[48%]">
+            <label
+              for="pesan"
+              class="block text-sm font-medium text-gray-700 mb-1"
+              >Pesan / Keterangan</label
+            >
+            <textarea
+              name="pesan"
+              id="pesan"
+              rows="4"
+              placeholder="Tuliskan pesan atau keterangan di sini..."
+              class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none resize-none"
+            ></textarea>
+          </div>
+
+          <!-- Captcha -->
+          <div class="flex w-full items-end">
+            <div class="w-[24%]">
+              <label
+                for="chaptcha"
+                class="block text-sm font-medium text-gray-700 mb-1"
+                >Captcha</label
+              >
+              <input
+                type="text"
+                name="chaptcha"
+                id="chaptcha"
+                placeholder="Masukkan kode verifikasi"
+                class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-green-400 focus:outline-none"
+              />
+            </div>
+            <img
+              src="/img/captcha.jfif"
+              alt="Captcha"
+              class="w-[100px] h-[35px] pb-2"
+            />
+          </div>
+
+          <!-- Tombol -->
+          <button
+            type="submit"
+            class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 rounded-md transition-colors duration-200"
+          >
+            Kirim
+          </button>
+        </form>
+        <span
+          id="buttonCloseModal"
+          class="absolute top-[-10px] right-[-10px] cursor-pointer bg-red-600 h-[30px] w-[30px] flex justify-center items-center text-white rounded-full"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+      </div>
+    </section>
+
+    <!-- Modal Confirmation -->
+    <section
+      id="boxModalConfirmation"
+      class="hidden absolute top-0 left-0 flex justify-center items-center z-50 w-full h-screen bg-[rgba(0,0,0,0.5)] transition-opacity duration-300"
+    >
+      <div
+        id="modalConfirmation"
+        class="bg-white text-gray-600 w-[40%] py-10 rounded-xl transform scale-95 opacity-0 transition-all duration-300 relative"
+      >
+        <!-- Form -->
+        <span
+          class="inline-block w-full text-center text-[7rem] text-orange-300 mb-6"
+        >
+          <i
+            class="fa-solid fa-exclamation border-2 border-orange-300 p-3 rounded-[100%]"
+          ></i>
+        </span>
+        <h1 class="text-2xl text-center font-bold">
+          Yakin Ingin Menghapus <br />
+          Data?
+        </h1>
+        <div class="w-full flex justify-center gap-10 mt-6">
+          <button
+            id="buttonYesModalConfirmation"
+            class="w-[150px] text-xl font-semibold bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded shadow"
+          >
+            Iya
+          </button>
+          <button
+            id="buttonCancelModalConfirmation"
+            class="w-[150px] text-xl font-semibold bg-orange-500 hover:bg-orange-600 text-white px-4 py-2 rounded shadow"
+          >
+            Batal
+          </button>
+        </div>
+      </div>
+    </section>
 
     <script>
+      // Modal
+      const buttonOpenModal = document.getElementById("buttonOpenModal");
+      const buttonCloseModal = document.getElementById("buttonCloseModal");
+      const boxModal = document.getElementById("boxModal");
+      const modalContent = document.getElementById("modalContent");
+
+      buttonOpenModal.addEventListener("click", () => {
+        boxModal.classList.remove("hidden");
+        setTimeout(() => {
+          modalContent.classList.remove("scale-95", "opacity-0");
+          modalContent.classList.add("scale-100", "opacity-100");
+        }, 50);
+      });
+
+      buttonCloseModal.addEventListener("click", () => {
+        modalContent.classList.remove("scale-100", "opacity-100");
+        modalContent.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          boxModal.classList.add("hidden");
+        }, 300);
+      });
+
+      // Modal Delete Confirmation
+      const deleteButtons = document.querySelectorAll(
+        ".buttonDeleteModalConfirmation"
+      );
+      const buttonYesModalConfirmation = document.getElementById(
+        "buttonYesModalConfirmation"
+      );
+      const buttonCancelModalConfirmation = document.getElementById(
+        "buttonCancelModalConfirmation"
+      );
+      const boxModalConfirmation = document.getElementById(
+        "boxModalConfirmation"
+      );
+      const modalConfirmation = document.getElementById("modalConfirmation");
+
+      deleteButtons.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          boxModalConfirmation.classList.remove("hidden");
+          setTimeout(() => {
+            modalConfirmation.classList.remove("scale-95", "opacity-0");
+            modalConfirmation.classList.add("scale-100", "opacity-100");
+          }, 50);
+        });
+      });
+
+      buttonCancelModalConfirmation.addEventListener("click", () => {
+        modalConfirmation.classList.remove("scale-100", "opacity-100");
+        modalConfirmation.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          boxModalConfirmation.classList.add("hidden");
+        }, 300);
+      });
+
+      buttonYesModalConfirmation.addEventListener("click", () => {
+        modalConfirmation.classList.remove("scale-100", "opacity-100");
+        modalConfirmation.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          boxModalConfirmation.classList.add("hidden");
+        }, 300);
+      });
+
       // Datatables
       $(document).ready(function () {
         var table = $("#mydatatable").DataTable({
