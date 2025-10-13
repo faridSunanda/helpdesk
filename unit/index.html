@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Scrollbar Style */
+      aside::-webkit-scrollbar {
+        width: 3px;
+      }
+      main::-webkit-scrollbar {
+        width: 5px;
+      }
+      aside::-webkit-scrollbar-thumb,
+      main::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body class="flex text-sm text-gray-700">
+    <!-- Tempat sidebar masuk -->
+    <div id="sidebar">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-white text-gray flex flex-col min-h-screen max-h-screen overflow-y-auto font-semibold"
+      >
+        <div class="p-4 text-2xl font-bold mt-[60px]"></div>
+
+        <nav class="flex-1 p-2 space-y-2">
+          <!-- Dashboard -->
+          <a
+            href="/unit"
+            class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >Dashboard</a
+          >
+          <div class="px-4 py-2 text-[0.8rem] text-gray-400">Page</div>
+          <!-- Tiket -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Tiket</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/unit/tiket"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Tiket</a
+              >
+            </div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Konten utama -->
+    <main
+      class="w-full flex-1 bg-[#F2F7FF] relative p-6 pt-[100px] text-gray-700 h-screen overflow-y-auto"
+    >
+      <header
+        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-50"
+      >
+        <div class="w-[170px]">
+          <img
+            src="https://sicantik.unwahas.ac.id/assets/images/logobaru3duwh.png"
+            alt=""
+          />
+        </div>
+        <div class="relative">
+          <div id="userButton" class="rounded p-2 cursor-pointer">
+            <div class="flex items-center gap-1">
+              <img
+                src="https://sicantik.unwahas.ac.id/assets/images/Unwahas.png"
+                alt=""
+                class="w-[25px] h-[29px]"
+              />
+              <span>Pelayanan Akademik</span>
+              <svg
+                class="w-4 h-4 transform transition-transform rotate-90"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            id="userDropdown"
+            class="bg-white w-full rounded absolute right-0 top-[38px] mt-2 hidden"
+          >
+            <a
+              href="#"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Profile
+            </a>
+            <a
+              href="/"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Title -->
+      <span class="font-bold text-xl text-gray-700">Dashboard</span>
+
+      <!-- Tabel -->
+      <section class="rounded mt-7 flex justify-between">
+        <div
+          class="w-[32%] relative h-[150px] bg-white rounded-md p-6 font-semibold"
+        >
+          <p>Total Tiket</p>
+          <span class="text-3xl font-bold">128</span>
+          <span
+            class="absolute bottom-6 left-6 w-[85%] h-[3px] rounded bg-green-300"
+          >
+          </span>
+          <span
+            class="absolute top-6 right-6 w-[70px] h-[50px] rounded bg-green-300"
+          ></span>
+        </div>
+        <div
+          class="w-[32%] relative h-[150px] bg-white rounded-md p-6 font-semibold"
+        >
+          <p>Tiket Selesai</p>
+          <span class="text-3xl font-bold">98</span>
+          <span
+            class="absolute bottom-6 left-6 w-[85%] h-[3px] rounded bg-[#96cafa]"
+          >
+          </span>
+          <span
+            class="absolute top-6 right-6 w-[70px] h-[50px] rounded bg-[#96cafa]"
+          ></span>
+          <div></div>
+        </div>
+        <div
+          class="w-[32%] relative h-[150px] bg-white rounded-md p-6 font-semibold"
+        >
+          <p>Tiket Belum Selesai</p>
+          <span class="text-3xl font-bold">30</span>
+          <span
+            class="absolute bottom-6 left-6 w-[85%] h-[3px] rounded bg-[#FF8A8A]"
+          >
+          </span>
+          <span
+            class="absolute top-6 right-6 w-[70px] h-[50px] rounded bg-[#FF8A8A]"
+          ></span>
+        </div>
+      </section>
+
+      <!-- Diagram -->
+      <section class="rounded mt-7 shadow flex justify-between">
+        <div class="rounded-md p-6 w-[49%] bg-white">
+          <h1 class="text-lg font-semibold text-gray-800 mb-4 text-center">
+            Total Tiket Tiap Bidang
+          </h1>
+
+          <canvas id="chartTotalKeluhan"></canvas>
+        </div>
+        <div class="rounded-md p-6 w-[49%] bg-white">
+          <h1 class="text-lg font-semibold text-gray-800 mb-4 text-center">
+            Tiket Belum Selesai Tiap Bidang
+          </h1>
+
+          <canvas id="chartBelumSelesai"></canvas>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="absolute left-0 bg-white text-center w-full mt-8 py-4">
+        <span>
+          <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+          | All Rights Reserved | Powered by
+          <a href="" class="hover:text-blue-800 font-semibold">
+            Universitas Wahid Hasyim
+          </a>
+        </span>
+      </footer>
+    </main>
+
+    <script>
+      const userButton = document.getElementById("userButton");
+      const userDropdown = document.getElementById("userDropdown");
+
+      userButton.addEventListener("mouseover", () => {
+        userDropdown.classList.remove("hidden");
+      });
+      userButton.addEventListener("mouseleave", (e) => {
+        if (!userDropdown.matches(":hover")) {
+          userDropdown.classList.add("hidden");
+        }
+      });
+      userDropdown.addEventListener("mouseleave", () => {
+        userDropdown.classList.add("hidden");
+      });
+
+      // Diagram
+      // Label Bidang
+      const bidangLabels = [
+        "Pelayanan Akademik",
+        "Pelayanan Keuangan",
+        "Kemahasiswaan",
+        "Sarana & Prasarana",
+        "SIKADU",
+        "SIKAWAN",
+        "Pelayanan Wisuda",
+        "TOEFL/TOAFL",
+        "Sistem Informasi",
+        "Perpustakaan",
+        "Pusat Karir",
+        "Jaringan/WiFi",
+      ];
+
+      // Total Tiket
+      const totalData = [12, 9, 6, 7, 14, 10, 5, 4, 8, 3, 2, 11];
+
+      const totalConfig = {
+        type: "bar",
+        data: {
+          labels: bidangLabels,
+          datasets: [
+            {
+              label: "Total Keluhan",
+              data: totalData,
+              backgroundColor: "rgba(34, 197, 94, 0.5)",
+              borderColor: "rgb(34, 197, 94)",
+              borderWidth: 0,
+              borderRadius: 2,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          scales: {
+            y: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Jumlah Keluhan",
+                color: "#4b5563",
+              },
+            },
+          },
+          plugins: {
+            legend: { display: false },
+          },
+        },
+      };
+
+      new Chart(document.getElementById("chartTotalKeluhan"), totalConfig);
+
+      // Tiket Belum Selesai
+      const belumSelesaiData = [5, 3, 2, 4, 6, 2, 1, 0, 3, 1, 1, 5];
+
+      const belumSelesaiConfig = {
+        type: "bar",
+        data: {
+          labels: bidangLabels,
+          datasets: [
+            {
+              label: "Belum Selesai",
+              data: belumSelesaiData,
+              backgroundColor: "rgba(239, 68, 68, 0.5)",
+              borderColor: "rgb(239, 68, 68)",
+              borderWidth: 0,
+              borderRadius: 1,
+            },
+          ],
+        },
+        options: {
+          indexAxis: "y",
+          responsive: true,
+          scales: {
+            x: {
+              beginAtZero: true,
+              title: {
+                display: true,
+                text: "Jumlah Belum Selesai",
+                color: "#4b5563",
+              },
+            },
+          },
+          plugins: {
+            legend: { display: false },
+          },
+        },
+      };
+
+      new Chart(
+        document.getElementById("chartBelumSelesai"),
+        belumSelesaiConfig
+      );
+    </script>
+  </body>
+</html>

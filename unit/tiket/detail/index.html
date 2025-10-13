@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+      defer
+    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      /* Scrollbar Style */
+      aside::-webkit-scrollbar {
+        width: 3px;
+      }
+      main::-webkit-scrollbar {
+        width: 5px;
+      }
+      aside::-webkit-scrollbar-thumb,
+      main::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+      .ts-wrapper {
+        width: 100% !important;
+      }
+
+      .ts-dropdown {
+        width: 100% !important;
+      }
+    </style>
+  </head>
+  <body class="flex text-sm text-gray-700">
+    <!-- Tempat sidebar masuk -->
+    <div id="sidebar">
+      <!-- Sidebar -->
+      <aside
+        class="w-64 bg-white text-gray flex flex-col min-h-screen max-h-screen overflow-y-auto font-semibold"
+      >
+        <div class="p-4 text-2xl font-bold mt-[60px]"></div>
+
+        <nav class="flex-1 p-2 space-y-2">
+          <!-- Dashboard -->
+          <a
+            href="/unit"
+            class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >Dashboard</a
+          >
+          <div class="px-4 py-2 text-[0.8rem] text-gray-400">Page</div>
+          <!-- Tiket -->
+          <div x-data="{ open: false }">
+            <button
+              @click="open = !open"
+              class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              <span>Tiket</span>
+              <svg
+                :class="{'rotate-90': open}"
+                class="w-4 h-4 transform transition-transform"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </button>
+            <div x-show="open" class="ml-6 mt-1 space-y-1">
+              <a
+                href="/unit/tiket"
+                class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
+                >Tiket</a
+              >
+            </div>
+          </div>
+        </nav>
+      </aside>
+    </div>
+
+    <!-- Konten utama -->
+    <main
+      class="w-full flex-1 bg-[#F2F7FF] relative p-6 pt-[100px] text-gray-700 h-screen overflow-y-auto"
+    >
+      <header
+        class="border border-2 w-full bg-white flex justify-between items-center p-4 fixed top-0 right-0 z-50"
+      >
+        <div class="w-[170px]">
+          <img
+            src="https://sicantik.unwahas.ac.id/assets/images/logobaru3duwh.png"
+            alt=""
+          />
+        </div>
+        <div class="relative">
+          <div id="userButton" class="rounded p-2 cursor-pointer">
+            <div class="flex items-center gap-1">
+              <img
+                src="https://sicantik.unwahas.ac.id/assets/images/Unwahas.png"
+                alt=""
+                class="w-[25px] h-[29px]"
+              />
+              <span>Pelayanan Akademik</span>
+              <svg
+                class="w-4 h-4 transform transition-transform rotate-90"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </div>
+          </div>
+          <div
+            id="userDropdown"
+            class="bg-white w-full rounded absolute right-0 top-[38px] mt-2 hidden"
+          >
+            <a
+              href="#"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Profile
+            </a>
+            <a
+              href="/"
+              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+            >
+              Logout
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <!-- Title -->
+      <span class="font-bold text-xl text-gray-700">Detail Tiket</span>
+
+      <!-- Tabel -->
+      <section class="bg-white p-6 rounded mt-7 shadow flex justify-between">
+        <!-- Kiri -->
+        <div class="w-[60%] min-h-screen text-gray-700">
+          <span class="flex gap-1 mb-8 items-center">
+            <h1 class="text-xl text-blue-500 font-semibold">29P-ZRV-5DS2</h1>
+            <span
+              class="bg-red-300 px-3 text-sm font-semibold text-red-600 rounded-md mt-1"
+            >
+              Baru
+            </span>
+          </span>
+          <span class="flex justify-between">
+            <p><span class="text-gray-400">Dari</span> : Farid Sunanda</p>
+            <p class="italic underline">24 Oktober 2025 08:00 WIB</p>
+          </span>
+          <p><span class="text-gray-400">Unit</span> : Fakultas</p>
+          <p><span class="text-gray-400">Status</span> : Dekan</p>
+          <p><span class="text-gray-400">NIM / NPP</span> : 21103041098</p>
+          <span class="inline-block w-full bg-blue-50 mt-4 p-3 rounded-md">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque sed
+            rem quod cupiditate blanditiis corporis fugiat provident nostrum
+            itaque officia minus facilis esse officiis laboriosam assumenda,
+            quasi aspernatur ducimus dolore.
+            <img
+              src="/img/demo-tiket.png"
+              alt="Gambar Laporan"
+              class="mt-3 border rounded"
+            />
+          </span>
+        </div>
+        <!-- Kanan -->
+        <div class="w-[35%]">
+          <!-- Progress Bar -->
+          <div class="w-full max-w-2xl mx-auto mt-10">
+            <!-- Container -->
+            <div class="relative flex justify-between items-center mb-8">
+              <!-- background -->
+              <div
+                class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0 rounded"
+              ></div>
+
+              <!-- Garis aktif -->
+              <div
+                class="absolute top-[calc(1/2+2px)] left-0 h-1 bg-green-500 z-10 transition-all duration-500 ease-in-out rounded"
+                style="width: 8%"
+              ></div>
+
+              <div
+                class="relative z-50 flex flex-col items-center text-center cursor-pointer group"
+              >
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-green-500 text-white rounded-full"
+                >
+                  1
+                </div>
+                <span class="text-sm mt-2 text-green-600 font-semibold"
+                  >Diterima</span
+                >
+
+                <!-- Tooltip modern -->
+                <div
+                  class="absolute z-50 bottom-full mb-3 px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap"
+                >
+                  Diterima pada 24 Oktober 2025 08:00 WIB
+                  <div
+                    class="absolute left-1/2 -bottom-1.5 w-2 h-2 bg-gray-800 rotate-45 -translate-x-1/2"
+                  ></div>
+                </div>
+              </div>
+
+              <div
+                class="relative z-20 flex flex-col items-center text-center cursor-pointer"
+              >
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-gray-300 text-gray-600 rounded-full"
+                >
+                  2
+                </div>
+                <span class="text-sm mt-2 text-gray-600 font-semibold"
+                  >Diproses</span
+                >
+              </div>
+
+              <div
+                class="relative z-20 flex flex-col items-center text-center cursor-pointer"
+              >
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-gray-300 text-gray-600 rounded-full"
+                >
+                  3
+                </div>
+                <span class="text-sm mt-2 text-gray-500 font-semibold"
+                  >Selesai</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <label for="bidang" class="text-gray-500"> Bidang </label>
+          <select
+            class="w-full border p-[12px] rounded-md outline-none mt-1 mb-2"
+            name="bidang"
+            id="filter-bidang"
+            placeholder="Pilih Bidang..."
+          >
+            <option value="Pelayanan Akademik">Pelayanan Akademik</option>
+            <option value="Pelayanan Keuangan">Pelayanan Keuangan</option>
+            <option value="Kemahasiswaan">Kemahasiswaan</option>
+            <option value="Sarana & Prasarana">Sarana & Prasarana</option>
+            <option value="SIKADU">SIKADU</option>
+            <option value="SIKAWAN">SIKAWAN</option>
+            <option value="Pelayanan Wisuda">Pelayanan Wisuda</option>
+            <option value="TOEFL/TOAFL">TOEFL/TOAFL</option>
+            <option value="Sistem Informasi">Sistem Informasi</option>
+            <option value="Perpustakaan">Perpustakaan</option>
+            <option value="Pusat Karir">Pusat Karir</option>
+            <option value="Jaringan/WiFi">Jaringan/WiFi</option>
+          </select>
+          <label for="status" class="text-gray-500"> Status Laporan </label>
+          <select
+            class="w-full border p-[12px] rounded-md outline-none mt-1 mb-2"
+            name="status"
+            id="filter-status"
+            placeholder="Pilih Status..."
+          >
+            <option value="">Baru</option>
+            <option value="">Dalam Proses</option>
+            <option value="">Selesai</option>
+          </select>
+          <label for="callback" class="text-gray-500">Pesan Balasan</label>
+          <textarea
+            name="callback"
+            placeholder="Tulsikan Pesan Balasan Disini..."
+            id="callback"
+            class="border block w-full h-48 outline-none focus:border-blue-200 rounded-md p-2"
+          ></textarea>
+          <button
+            class="w-full py-3 font-semibold text-md bg-green-500 mt-2 rounded-md text-white"
+          >
+            Simpan Data
+          </button>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer
+        class="absolute left-0 bg-white text-center w-full mt-[200px] py-4"
+      >
+        <span>
+          <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+          | All Rights Reserved | Powered by
+          <a href="" class="hover:text-blue-800 font-semibold">
+            Universitas Wahid Hasyim
+          </a>
+        </span>
+      </footer>
+    </main>
+
+    <script>
+      const userButton = document.getElementById("userButton");
+      const userDropdown = document.getElementById("userDropdown");
+
+      userButton.addEventListener("mouseover", () => {
+        userDropdown.classList.remove("hidden");
+      });
+      userButton.addEventListener("mouseleave", (e) => {
+        if (!userDropdown.matches(":hover")) {
+          userDropdown.classList.add("hidden");
+        }
+      });
+      userDropdown.addEventListener("mouseleave", () => {
+        userDropdown.classList.add("hidden");
+      });
+      //Tom Select
+      new TomSelect("#filter-bidang", {
+        create: false,
+        // sortField: { field: "text", direction: "asc" },
+        placeholder: "Pilih Bidang...",
+      });
+
+      new TomSelect("#filter-status", {
+        create: false,
+        // sortField: { field: "text", direction: "asc" },
+        placeholder: "Pilih Status...",
+      });
+    </script>
+  </body>
+</html>
