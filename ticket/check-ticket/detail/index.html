@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <link rel="icon" href="/img/favicon.png" type="image/x-icon" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Helpdesk UNWAHAS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/fontawesome-free-7.1.0-web/css/all.min.css" />
+    <style>
+      /* Scrollbar Style */
+      body::-webkit-scrollbar {
+        width: 5px;
+      }
+      body::-webkit-scrollbar-thumb {
+        background: #16a34a;
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header -->
+    <header
+      id="main-header"
+      class="w-full sticky top-0 z-50 bg-white transition-shadow duration-300"
+    >
+      <nav class="w-full bg-white px-4 py-3 flex justify-between items-center">
+        <div class="w-[180px]">
+          <a href="#">
+            <img src="/img/logo.png" alt="Logo" />
+          </a>
+        </div>
+
+        <div
+          class="w-[70%] text-center font-semibold flex justify-center gap-8"
+        >
+          <a href="/" class="relative group pb-1">
+            Beranda
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+
+          <a href="/#faq" class="relative group pb-1">
+            FAQ
+            <span
+              class="absolute left-0 bottom-0 w-0 h-[2px] bg-green-400 transition-all duration-300 group-hover:w-full"
+            ></span>
+          </a>
+        </div>
+
+        <div class="w-[180px] text-right">
+          <button
+            onclick="window.location.href='/login'"
+            class="cursor-pointer border px-6 py-[6px] rounded border-green-600 text-green-600 font-semibold hover:bg-green-600 hover:text-white transition"
+          >
+            Login
+          </button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- Send Ticket -->
+    <section class="py-16 bg-white min-h-[calc(100vh-100px)]">
+      <!-- Ticket -->
+      <div class="w-[90%] mx-auto border p-4 flex justify-between rounded-md">
+        <!-- Kiri -->
+        <div class="w-[60%] min-h-screen text-gray-700">
+          <span class="flex gap-1 mb-8 items-center">
+            <h1 class="text-xl text-blue-500 font-semibold">29P-ZRV-5DS2</h1>
+            <span
+              class="bg-yellow-300 px-3 text-sm font-semibold text-yellow-600 rounded-md mt-1"
+            >
+              Sedang Diproses
+            </span>
+          </span>
+          <span class="flex justify-between">
+            <p><span class="text-gray-400">Dari</span> : Farid Sunanda</p>
+            <p class="italic underline">24 Oktober 2025 08:00 WIB</p>
+          </span>
+          <p><span class="text-gray-400">Kepada</span> : Pelayanan Akademik</p>
+          <p><span class="text-gray-400">Unit</span> : Fakultas</p>
+          <p><span class="text-gray-400">Status</span> : Dekan</p>
+          <p><span class="text-gray-400">NIM / NPP</span> : 21103041098</p>
+          <span class="inline-block w-full bg-blue-50 mt-4 p-3 rounded-md">
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Neque sed
+            rem quod cupiditate blanditiis corporis fugiat provident nostrum
+            itaque officia minus facilis esse officiis laboriosam assumenda,
+            quasi aspernatur ducimus dolore.
+            <img
+              src="/img/demo-tiket.png"
+              alt="Gambar Laporan"
+              class="mt-3 border rounded"
+            />
+          </span>
+        </div>
+        <!-- Kanan -->
+        <div class="w-[35%]">
+          <!-- Progress Bar -->
+          <div class="w-full max-w-2xl mx-auto mt-10">
+            <!-- Container -->
+            <div class="relative flex justify-between items-center mb-8">
+              <!-- background -->
+              <div
+                class="absolute top-1/2 left-0 w-full h-1 bg-gray-200 -translate-y-1/2 z-0 rounded"
+              ></div>
+
+              <!-- Garis aktif -->
+              <div
+                class="absolute top-[calc(1/2+2px)] left-0 h-1 bg-green-500 z-10 transition-all duration-500 ease-in-out rounded"
+                style="width: 50%"
+              ></div>
+
+              <div
+                class="relative flex flex-col items-center text-center cursor-pointer group"
+              >
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-green-500 text-white rounded-full"
+                >
+                  1
+                </div>
+                <span class="text-sm mt-2 text-green-600 font-semibold"
+                  >Diterima</span
+                >
+
+                <!-- Tooltip -->
+                <div
+                  class="absolute bottom-full mb-3 px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap"
+                >
+                  Diterima pada 24 Oktober 2025 08:00 WIB
+                  <div
+                    class="absolute left-1/2 -bottom-1.5 w-2 h-2 bg-gray-800 rotate-45 -translate-x-1/2"
+                  ></div>
+                </div>
+              </div>
+
+              <div
+                class="relative flex flex-col items-center text-center cursor-pointer group"
+              >
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-green-500 text-white rounded-full"
+                >
+                  2
+                </div>
+                <span class="text-sm mt-2 text-green-600 font-semibold"
+                  >Diproses</span
+                >
+
+                <!-- Tooltip -->
+                <div
+                  class="absolute bottom-full mb-3 px-3 py-2 bg-gray-800 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300 pointer-events-none whitespace-nowrap"
+                >
+                  Diproses pada 25 Oktober 2025 09:00 WIB
+                  <div
+                    class="absolute left-1/2 -bottom-1.5 w-2 h-2 bg-gray-800 rotate-45 -translate-x-1/2"
+                  ></div>
+                </div>
+              </div>
+
+              <div
+                class="relative z-20 flex flex-col items-center text-center cursor-pointer"
+              >
+                <div
+                  class="w-8 h-8 flex items-center justify-center bg-gray-300 text-gray-600 rounded-full"
+                >
+                  3
+                </div>
+                <span class="text-sm mt-2 text-gray-500 font-semibold"
+                  >Selesai</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <p class="px-2 py-4 bg-blue-50 rounded-md text-sm mb-2">
+            Terimakasih atas laporannya. Laporan anda akan segera kami tangani
+            <span class="block text-right text-xs">- Pelayanan Akademik</span>
+          </p>
+          <label for="callback" class="text-gray-500">Pesan Balasan</label>
+          <textarea
+            name="callback"
+            placeholder="Tulsikan Pesan Balasan Disini..."
+            id="callback"
+            class="border block w-full h-48 outline-none focus:border-blue-200 rounded-md p-2"
+          ></textarea>
+          <button
+            class="w-full py-3 font-semibold text-md bg-green-500 mt-2 rounded-md text-white"
+          >
+            Kirim
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer
+      class="w-full bg-green-600 py-6 text-center text-[0.8rem] text-white"
+    >
+      <span>
+        <a href="" class="hover:text-blue-800 font-semibold"> © UPT PSID </a>
+        | All Rights Reserved | Powered by
+        <a href="" class="hover:text-blue-800 font-semibold">
+          Universitas Wahid Hasyim
+        </a>
+      </span>
+    </footer>
+
+    <!-- Script -->
+    <script>
+      //   Smooth Scroll
+      const header = document.getElementById("main-header");
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 10) {
+          header.classList.add("shadow-md", "bg-white/95", "backdrop-blur-sm");
+        } else {
+          header.classList.remove(
+            "shadow-md",
+            "bg-white/95",
+            "backdrop-blur-sm"
+          );
+        }
+      });
+    </script>
+  </body>
+</html>

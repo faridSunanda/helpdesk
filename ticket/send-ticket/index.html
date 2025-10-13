@@ -214,7 +214,8 @@
 
           <!-- Tombol -->
           <button
-            type="submit"
+            id="buttonOpenModalAfterSending"
+            type="button"
             class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2.5 rounded-md transition-colors duration-200"
           >
             Kirim
@@ -236,8 +237,86 @@
       </span>
     </footer>
 
+    <!-- Modal After Sending -->
+    <section
+      id="boxModalAfterSending"
+      class="hidden fixed top-0 left-0 flex justify-center items-center z-50 w-full h-screen bg-[rgba(0,0,0,0.5)] transition-opacity duration-300"
+    >
+      <div
+        id="modalAfterSending"
+        class="bg-white text-center text-gray-600 w-[40%] py-10 rounded-xl transform scale-95 opacity-0 transition-all duration-300 relative"
+      >
+        <span
+          id="buttonCloseModalAfterSending"
+          class="absolute top-[-10px] right-[-10px] cursor-pointer bg-red-500 h-[30px] w-[30px] flex justify-center items-center text-white rounded-full border-2 hover:bg-red-600 transition"
+        >
+          <i class="fa-solid fa-xmark"></i>
+        </span>
+        <!-- Form -->
+        <div class="w-full flex justify-center mb-2">
+          <span
+            class="flex w-[200px] h-[200px] rounded-full border-2 border-green-300 justify-center items-center text-[6rem] text-green-300"
+          >
+            <i class="fa-regular fa-envelope"></i>
+          </span>
+        </div>
+        <h1 class="text-xl text-center font-bold">
+          Terimakasih Atas Laporannya.
+        </h1>
+        <span class="block px-4 py-2">
+          Untuk melihat progres laporan yang anda buat, anda dapat mengecek
+          secara berkala menggunakan ID Pelacakan Milik Anda.
+        </span>
+        <span class="block px-4 py-2">ID Pelacakan anda</span>
+        <span
+          class="inline-block bg-blue-50 rounded-md text-center p-6 text-xl font-bold"
+        >
+          64D-RTH-9PL2
+        </span>
+        <p class="text-[0.7rem] text-red-500">
+          Nb: Mohon catat ID Pelacakan anda untuk pengecekan laporan secara
+          berkala
+        </p>
+        <a href="/ticket/check-ticket">
+          <button
+            id="buttonCancelModalAfterSending"
+            class="w-[150px] text-lg font-semibold bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded shadow mt-2"
+          >
+            Cek Laporan
+          </button>
+        </a>
+      </div>
+    </section>
+
     <!-- Script -->
     <script>
+      // Modal After Sending
+      const buttonOpenModalAfterSending = document.getElementById(
+        "buttonOpenModalAfterSending"
+      );
+      const buttonCloseModalAfterSending = document.getElementById(
+        "buttonCloseModalAfterSending"
+      );
+      const boxModalAfterSending = document.getElementById(
+        "boxModalAfterSending"
+      );
+      const modalAfterSending = document.getElementById("modalAfterSending");
+
+      buttonOpenModalAfterSending.addEventListener("click", () => {
+        boxModalAfterSending.classList.remove("hidden");
+        setTimeout(() => {
+          modalAfterSending.classList.remove("scale-95", "opacity-0");
+          modalAfterSending.classList.add("scale-100", "opacity-100");
+        }, 50);
+      });
+
+      buttonCloseModalAfterSending.addEventListener("click", () => {
+        modalAfterSending.classList.remove("scale-100", "opacity-100");
+        modalAfterSending.classList.add("scale-95", "opacity-0");
+        setTimeout(() => {
+          boxModalAfterSending.classList.add("hidden");
+        }, 300);
+      });
       //   Smooth Scroll
       const header = document.getElementById("main-header");
 
