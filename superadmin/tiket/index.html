@@ -98,9 +98,11 @@
           <!-- Dashboard -->
           <a
             href="/superadmin"
-            class="block px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
-            >Dashboard</a
+            class="flex items-center gap-1 px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
           >
+            <ion-icon name="grid-outline"></ion-icon>
+            Dashboard
+          </a>
           <div class="px-4 py-2 text-[0.8rem] text-gray-400">Page</div>
           <!-- Master -->
           <div x-data="{ open: false }">
@@ -108,7 +110,7 @@
               @click="open = !open"
               class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
             >
-              <span>Master</span>
+              <span><ion-icon name="server-outline"></ion-icon> Master</span>
               <svg
                 :class="{'rotate-90': open}"
                 class="w-4 h-4 transform transition-transform"
@@ -149,7 +151,10 @@
               @click="open = !open"
               class="w-full flex justify-between items-center px-4 py-2 rounded hover:bg-gradient-to-r from-[#bff3c2] to-white"
             >
-              <span>Tiket</span>
+              <span>
+                <ion-icon name="documents-outline"></ion-icon>
+                Tiket
+              </span>
               <svg
                 :class="{'rotate-90': open}"
                 class="w-4 h-4 transform transition-transform"
@@ -218,24 +223,36 @@
           </div>
           <div
             id="userDropdown"
-            class="bg-white w-full rounded absolute right-0 top-[38px] mt-2 hidden"
+            class="bg-white w-full rounded absolute right-0 top-[35px] mt-2 hidden"
           >
             <a
               href="/aktor"
-              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+              class="flex items-center gap-1 p-2 w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
             >
+              <ion-icon
+                style="font-size: 1.2rem"
+                name="people-circle-outline"
+              ></ion-icon>
               Ganti Role
             </a>
             <a
               href="#"
-              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+              class="flex items-center gap-1 p-2 w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
             >
+              <ion-icon
+                name="arrow-undo-circle-outline"
+                style="font-size: 1.2rem"
+              ></ion-icon>
               Back to SSO
             </a>
             <a
               href="/"
-              class="p-2 block w-full border border-white hover:bg-gradient-to-r from-[#bff3c2] to-white"
+              class="bg-red-500 text-white flex items-center gap-1 p-2 block w-full border border-white hover:bg-red-600 transition"
             >
+              <ion-icon
+                style="font-size: 1.2rem"
+                name="log-out-outline"
+              ></ion-icon>
               Logout
             </a>
           </div>
@@ -927,7 +944,16 @@
       </div>
     </section>
 
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
     <script>
+      // IONICON
       // Modal
       const buttonOpenModal = document.getElementById("buttonOpenModal");
       const buttonCloseModal = document.getElementById("buttonCloseModal");
